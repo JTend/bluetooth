@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Device } from '../redux/devices/types';
 import { State } from '../redux';
 import { loadDevices } from '../redux/devices/actions';
+import * as stl from '../libs/styles';
+import { View, Text } from 'react-native';
 
 const Devices = () => {
   const dispatch = useDispatch();
@@ -21,9 +23,11 @@ const Devices = () => {
   }, [devices])
 
   return (
-    <div>
-      
-    </div>
+    <View style={[stl.Flex.column, stl.Size.fullScreen, stl.Flex.center]}>
+      <View style={[stl.Flex.row, stl.Background.cyan]}>
+        <Text>Test</Text>
+      </View>
+    </View>
   )
 }
 

@@ -3,7 +3,7 @@ import { StyleSheet, Dimensions } from 'react-native';
 const color = {
   white : "white",
   dark : "#2a2a2a",
-
+  cyan : "cyan",
 }
 
 export const Flex = StyleSheet.create({
@@ -21,5 +21,14 @@ export const Flex = StyleSheet.create({
     height : Dimensions.get('screen').height,
     width : Dimensions.get('window').width
   },
+  center : { justifyContent : "center" }
 });
 
+export const Size = StyleSheet.create({
+  fullScreen : { width : Dimensions.get("screen").width, height : Dimensions.get("screen").height },
+
+});
+
+export const Background = StyleSheet.create({
+  cyan : { backgroundColor : color.cyan }
+});
