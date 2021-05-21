@@ -20,15 +20,15 @@ const Devices = () => {
 
   useEffect(() => {
     console.log("Devices:", devices);
-  }, [devices])
-
+  }, [devices]);
+  
   return (
-    <View style={[stl.Flex.column, stl.Size.fullScreen, stl.Flex.center]}>
+    <View style={[stl.Flex.column, stl.Background.dark, stl.Size.fullScreen, stl.Flex.center]}>
       <View style={[stl.Flex.row, stl.Background.cyan, stl.Flex.center]}>
-        <Text>Test</Text>
+        <Text>TEST</Text>
       </View>
     </View>
-  )
+  );
 }
 
 export default Devices;

@@ -25,10 +25,21 @@ export const Flex = StyleSheet.create({
 });
 
 export const Size = StyleSheet.create({
-  fullScreen : { width : Dimensions.get("screen").width, height : Dimensions.get("screen").height },
+  fullScreen : { 
+    width : Dimensions.get("screen").width, height : Dimensions.get("screen").height,
+    top : 0, left : 0
+  },
 
 });
 
 export const Background = StyleSheet.create({
-  cyan : { backgroundColor : color.cyan }
+  cyan : { backgroundColor : color.cyan },
+  dark : { backgroundColor : color.dark },
+  white : { backgroundColor : color.white },
+});
+
+export const Text = StyleSheet.create({
+  cyan : { color : color.cyan },
+  dark : { color : color.dark },
+  white :{ color : color.white },
 });
