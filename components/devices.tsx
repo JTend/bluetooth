@@ -24,7 +24,7 @@ const Devices = () => {
 
   return (
     <View style={[stl.Flex.column, stl.Size.fullScreen, stl.Flex.center]}>
-      <View style={[stl.Flex.row, stl.Background.cyan]}>
+      <View style={[stl.Flex.row, stl.Background.cyan, stl.Flex.center]}>
         <Text>Test</Text>
       </View>
     </View>
