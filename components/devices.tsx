@@ -4,7 +4,9 @@ import { Device } from '../redux/devices/types';
 import { State } from '../redux';
 import { loadDevices } from '../redux/devices/actions';
 import * as stl from '../libs/styles';
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
+import MaterialCI from 'react-native-vector-icons/MaterialCommunityIcons';
+import Card from './card'
 
 const Devices = () => {
   const dispatch = useDispatch();
@@ -13,9 +15,10 @@ const Devices = () => {
   const failure : boolean = useSelector((state : State) => state.reduceDevices.FAILURE);
   const succeed : boolean = useSelector((state : State) => state.reduceDevices.SUCCEED);
   const message : string = useSelector((state : State) => state.reduceDevices.Error);
+  const mockDevices = Array(50).fill("DEVICE");
 
   useEffect(() => {
-    dispatch(loadDevices());
+    dispatch( loadDevices() );
   }, []);
 
   useEffect(() => {
@@ -23,10 +26,10 @@ const Devices = () => {
   }, [devices]);
   
   return (
-    <View style={[stl.Flex.column, stl.Background.dark, stl.Size.fullScreen, stl.Flex.center]}>
-      <View style={[stl.Flex.row, stl.Background.cyan, stl.Flex.center]}>
-        <Text>TEST</Text>
-      </View>
+    <View style={stl.Frames.Main}>
+      <ScrollView>
+        { mockDevices.map((dev, idx) => <Card title={dev} key={idx} />) }
+      </ScrollView>
     </View>
   );
 }
