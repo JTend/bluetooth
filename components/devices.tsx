@@ -1,36 +1,34 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { Device } from '../redux/devices/types';
-import { State } from '../redux';
-import { loadDevices } from '../redux/devices/actions';
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import { DrawerActions, useNavigation } from '@react-navigation/core';
+import List from './devices/list';
+import Material from 'react-native-vector-icons/MaterialIcons';
 import * as stl from '../libs/styles';
-import { View, Text, ScrollView } from 'react-native';
-import MaterialCI from 'react-native-vector-icons/MaterialCommunityIcons';
-import Card from './card'
+import { useDispatch } from 'react-redux';
+import { resetLoad } from '../redux/devices/actions';
+
+const stack = createStackNavigator();
 
 const Devices = () => {
+  const navigator = useNavigation();
   const dispatch = useDispatch();
-  const devices : Array<Device> = useSelector((state : State) => state.reduceDevices.Devices);
-  const started : boolean = useSelector((state : State) => state.reduceDevices.STARTED);
-  const failure : boolean = useSelector((state : State) => state.reduceDevices.FAILURE);
-  const succeed : boolean = useSelector((state : State) => state.reduceDevices.SUCCEED);
-  const message : string = useSelector((state : State) => state.reduceDevices.Error);
-  const mockDevices = Array(50).fill("DEVICE");
-
-  useEffect(() => {
-    dispatch( loadDevices() );
-  }, []);
-
-  useEffect(() => {
-    console.log("Devices:", devices);
-  }, [devices]);
   
   return (
-    <View style={stl.Frames.Main}>
-      <ScrollView>
-        { mockDevices.map((dev, idx) => <Card title={dev} key={idx} />) }
-      </ScrollView>
-    </View>
+    <stack.Navigator>
+      <stack.Screen name="listDevices" component={List} options={{
+        title : "Dispositivos",
+        headerLeft : () => (
+          <Material name="menu" size={32} color="black" style={stl.Icon.Row}
+            onPress={ () => navigator.dispatch(DrawerActions.toggleDrawer()) }
+          />
+        ),
+        headerRight : () => (
+          <Material name="sync" color="black" size={32} style={stl.Icon.Row}
+            onPress={ () => dispatch( resetLoad() ) }
+          />
+        )
+      }} />
+    </stack.Navigator>
   );
 }
 

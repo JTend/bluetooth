@@ -31,6 +31,13 @@ export const reduceDevices = (state : StateDevices = initialState, action : Acti
       Devices : action.payload,
       Error : ''
     });
+    case actions.ADD_DEVICE: return ({
+      STARTED : false,
+      FAILURE : false,
+      SUCCEED : true,
+      Devices : state.Devices.some(ele => ele === action.payload) ? [...state.Devices] : [...state.Devices ,action.payload],
+      Error : ''
+    });
     case actions.RESET_DEVICES_STATE: return initialState;
     default: return state;
   }

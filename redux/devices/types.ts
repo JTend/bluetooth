@@ -2,7 +2,8 @@
 export interface Action { type : string; payload : any; };
 
 export interface Device {
-  name : string;
+  id : string;
+  name? : string;
 }
 
 export interface StateDevices {
@@ -19,5 +20,6 @@ export const actions = {
   LOAD_DEVICES_STARTED : 'LOAD_DEVICES_STARTED',
   LOAD_DEVICES_SUCCEED : 'LOAD_DEVICES_SUCCEED',
   LOAD_DEVICES_FAILURE : 'LOAD_DEVICES_FAILURE',
-  RESET_DEVICES_STATE : 'RESET_DEVICES_STATE'
+  RESET_DEVICES_STATE : 'RESET_DEVICES_STATE',
+  ADD_DEVICE : 'ADD_DEVICE'
 }

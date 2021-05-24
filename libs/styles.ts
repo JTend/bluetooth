@@ -1,9 +1,11 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
 const color = {
+  light : "whitesmoke",
   white : "white",
-  dark : "#2a2a2a",
-  cyan : "cyan",
+  dark : "gray",
+  black : "black",
+  cyan : "cyan"
 }
 
 export const Flex = StyleSheet.create({
@@ -13,13 +15,6 @@ export const Flex = StyleSheet.create({
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25, shadowRadius: 3, elevation : 5
-  },
-  watermark : {
-    position : 'absolute',
-    left : 0, bottom : 0,
-    zIndex : -1,
-    height : Dimensions.get('screen').height,
-    width : Dimensions.get('window').width
   },
   center : { justifyContent : "center" },
   between : { justifyContent : "space-between" },
@@ -39,14 +34,31 @@ export const Background = StyleSheet.create({
   white : { backgroundColor : color.white },
 });
 
-export const Text = StyleSheet.create({
+const text = StyleSheet.create({
   cyan : { color : color.cyan },
   dark : { color : color.dark },
-  white :{ color : color.white },
+  white : { color : color.white },
+  black : { color : color.black },
+  title : { fontSize : 24, fontWeight : "bold" },
+  normal : { fontSize : 20 },
+  row : { flex : 1, marginHorizontal : 5 }
 });
 
+const margin = StyleSheet.create({
+  zero : { margin : 0 },
+  short : { margin : 5 },
+  medium : { margin : 10 },
+  wide : { margin : 20 }
+});
+
+export const Text = {
+  Title : [ text.title, text.black, margin.wide ],
+  Paragraph: [ text.normal, text.dark ],
+  Row : [ text.normal, text.dark, text.row ]
+};
+
 export const Icon = StyleSheet.create({
-  right : { padding : 10 }
+  Row : { padding : 10 }
 });
 
 const card = StyleSheet.create({
@@ -59,5 +71,6 @@ const round = StyleSheet.create({
 
 export const Frames = {
   Card : [ Flex.column, Flex.shadow, card.style, round.style, Background.white ],
-  Main : [ Flex.column, Background.white, Size.fullScreen, Flex.start ]
+  Main : [ Flex.column, Background.white, Size.fullScreen, Flex.start ],
+  toCenter : [ Flex.column, Background.white, Size.fullScreen, Flex.center ]
 };
